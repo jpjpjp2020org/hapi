@@ -8,6 +8,8 @@ SMS on 2G is a robust way to collect resource requests on the ground, when highe
 
 Using django as a client/API hybrid makes it easier to orchestrate 2 3rd party apis and storing data during processing (as might need to ask for more info from the sender).
 
+robust comms coordination not governance - handled in the main client.
+
 Pos JSON example:
 
 ```json
@@ -22,7 +24,7 @@ Pos JSON example:
 }
 ```
 
-### Future:
+### Future:\
 
 Ideally would make it more modular with a dedicate client and dedicated APIs which consume respective 3rd party APIs.
 Also, could research if Signal Protocol could be used.
