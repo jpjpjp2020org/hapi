@@ -10,6 +10,10 @@ Using django as a client/API hybrid makes it easier to orchestrate 2 3rd party a
 
 robust comms coordination not governance - handled in the main client.
 
+### TO DO:
+
+ - bool for direct_to_json - if reoutes through openAI or not and goes ddirectly to JSON output - easier to test main client as can isolate hapi.
+
 Pos JSON example:
 
 ```json

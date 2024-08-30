@@ -31,6 +31,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost').split(',')
 TWILIO_ACCOUNT_SID = config('TWILIO_ACCOUNT_SID')
 TWILIO_AUTH_TOKEN = config('TWILIO_AUTH_TOKEN')
 TWILIO_PHONE_NUMBER = config('TWILIO_PHONE_NUMBER')
+OPENAI_API_KEY = config('OPENAI_API_KEY')
 
 # Application definition
 
