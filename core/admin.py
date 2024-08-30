@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import SMSData, SMSValDump
 
-# Register your models here.
+admin.site.register(SMSData)
+admin.site.register(SMSValDump)
