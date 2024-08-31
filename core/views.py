@@ -2,6 +2,9 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import SMSData, SMSValDump
 from .utils import call_openai, send_twilio_message
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .serializers import SMSDataSerializer, SMSValDumpSerializer
 
 @csrf_exempt  # Disabling CSRF for this view, as it will be called by Twilio's servers
 def receive_sms(request):
@@ -46,3 +49,21 @@ def receive_sms(request):
     # log if an invalid request method is received
     print("Invalid request method received.")
     return JsonResponse({'error': 'Invalid request method'}, status=400)
+
+# nrgok url/api/sms-data/
+
+# endpoint for fetching complete SMS data
+@api_view(['GET'])
+def get_sms_data(request):
+    sms_data = SMSData.objects.all()
+    serializer = SMSDataSerializer(sms_data, many=True)
+    return Response(serializer.data)
+
+#ngrok url/api/sms-val-dump/
+
+# endpoint for fetching incomplete or raw SMS data
+@api_view(['GET'])
+def get_sms_val_dump(request):
+    sms_val_dump = SMSValDump.objects.all()
+    serializer = SMSValDumpSerializer(sms_val_dump, many=True)
+    return Response(serializer.data)

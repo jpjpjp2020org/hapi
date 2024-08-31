@@ -3,7 +3,6 @@ from openai import OpenAI
 from django.conf import settings
 import json
 import re
-from core.models import SMSData, SMSValDump
 
 
 def send_twilio_message(to, message):
