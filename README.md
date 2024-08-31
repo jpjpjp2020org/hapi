@@ -10,22 +10,59 @@ Using django as a client/API hybrid makes it easier to orchestrate 2 3rd party a
 
 robust comms coordination not governance - handled in the main client.
 
-### TO DO:
+### Data consumption:
 
- - bool for direct_to_json - if reoutes through openAI or not and goes ddirectly to JSON output - easier to test main client as can isolate hapi.
+- For GET requests can use these endpoints with the latest ngrok free url:
 
-Pos JSON example:
+    - https://0110-2001-1530-1003-8e5-34f7-882d-2993-9fca.ngrok-free.app/api/sms-data/ 
+    - https://0110-2001-1530-1003-8e5-34f7-882d-2993-9fca.ngrok-free.app/api/sms-val-dump/
+
+- sms-data returns JSON for db data which OpenAI API helper deemed complete after evaluation.
+- sms-val-dump returns JSON for db data which OpenAI API helper deemed incomplete after evaluation.
+- Can use these in separate updatable lists on the main dashboard - incomplete one allows to check that no message is missing.
+
+JSON example for sms-data (complete):
 
 ```json
-{
-    "phone_number": "+1234567890",
-    "message_content": "Need water at coordinates 49.233, 28.467",
-    "status": "complete",
-    "additional_info": {
-        "needed_items": ["water", "food"],
-        "location": "coordinates 49.233, 28.467"
+[
+    {
+        "id": 2,
+        "phone_number": "phone number here",
+        "message_content": "Need two diesel generators in Pärnu Pikk tänav 1 on next Wednesday 4th",
+        "resource_needed": "diesel generators",
+        "quantity": "two",
+        "location": "Pärnu Pikk tänav 1",
+        "timeline": "next Wednesday 4th",
+        "evaluation": "complete",
+        "created_at": "2024-08-30T19:45:19.131998Z",
+        "updated_at": "2024-08-30T19:45:19.132051Z"
+    },
+    {
+        "id": 3,
+        "phone_number": "phone number here",
+        "message_content": "200L drinking water in Peraküla beach parking lot as soon as possible ",
+        "resource_needed": "drinking water",
+        "quantity": "200L",
+        "location": "Peraküla beach parking lot",
+        "timeline": "as soon as possible",
+        "evaluation": "complete",
+        "created_at": "2024-08-30T19:47:55.007213Z",
+        "updated_at": "2024-08-30T19:47:55.007269Z"
     }
-}
+]
+```
+
+JSON example for sms-val-dump (incomplete):
+
+```json
+[
+    {
+        "id": 1,
+        "phone_number": "phone number here",
+        "message_content": "Vaja oleks vett ASAP test ",
+        "created_at": "2024-08-30T19:46:57.410387Z"
+    }
+]
 ```
 
 ### Future:\

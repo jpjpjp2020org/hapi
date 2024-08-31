@@ -26,6 +26,13 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# Set to True to enable push to mai nclient | False to not use it - if doing GET via designated endpoints
+ENABLE_REALTIME_PUSH = False
+
+# load main client endpoints from .env
+MAIN_CLIENT_ENDPOINT_SMS_DATA = config('MAIN_CLIENT_ENDPOINT_SMS_DATA', default=None)
+MAIN_CLIENT_ENDPOINT_SMS_VAL_DUMP = config('MAIN_CLIENT_ENDPOINT_SMS_VAL_DUMP', default=None)
+
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost').split(',')
 
 TWILIO_ACCOUNT_SID = config('TWILIO_ACCOUNT_SID')
