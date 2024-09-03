@@ -19,7 +19,7 @@ def push_data_to_client(data, endpoint):
 # django Signal handler for SMSData
 @receiver(post_save, sender=SMSData)
 def push_sms_data_to_client(sender, instance, created, **kwargs):
-    if created and getattr(settings, 'ENABLE_REALTIME_PUSH', False):  # check if push is enabled
+    if created and getattr(settings, 'ENABLE_REALTIME_PUSH', False):  # check if push is enabled - , False is fallback default  to keep dormant - EDIT IN SETTINGS NOT IN HERE TO TURN ON.
         # data to push
         data = {
             "phone_number": instance.phone_number,
@@ -37,8 +37,9 @@ def push_sms_data_to_client(sender, instance, created, **kwargs):
             push_data_to_client(data, client_endpoint)
 
 # django Signal handler for SMSValDump
+@receiver(post_save, sender=SMSValDump)
 def push_sms_val_dump_to_client(sender, instance, created, **kwargs):
-    if created and getattr(settings, 'ENABLE_REALTIME_PUSH', False):  # check if push is enabled
+    if created and getattr(settings, 'ENABLE_REALTIME_PUSH', False):  # check if push is enabled - , False is fallback default  to keep dormant - EDIT IN SETTINGS NOT IN HERE TO TURN ON.
         # data to push
         data = {
             "phone_number": instance.phone_number,

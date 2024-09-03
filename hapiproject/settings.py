@@ -26,7 +26,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# Set to True to enable push to mai nclient | False to not use it - if doing GET via designated endpoints
+# Set to True to enable push to main client | False to not use it - if doing GET via designated endpoints
 ENABLE_REALTIME_PUSH = False
 
 # load main client endpoints from .env
