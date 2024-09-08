@@ -7,8 +7,13 @@ import json
 
 # push data to an external endpoint
 def push_data_to_client(data, endpoint):
+
+    headers = {'Content-Type': 'application/json'}
+
+    print(f"PDTC: Sending payload to {endpoint}: {data}")
+
     try:
-        response = requests.post(endpoint, json=data, timeout=5)
+        response = requests.post(endpoint, json=data, timeout=5, verify=False)
         if response.status_code == 200:
             print(f"PDTC: Successfully pushed data to {endpoint}")
         else:

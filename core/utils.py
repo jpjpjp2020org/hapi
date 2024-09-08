@@ -65,5 +65,3 @@ def call_openai(message_content):
             'response_json': None,
             'needs_more_info': False
         }
-
-

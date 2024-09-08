@@ -27,7 +27,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = True
 
 # Set to True to enable push to main client | False to not use it - if doing GET via designated endpoints
-ENABLE_REALTIME_PUSH = False
+ENABLE_REALTIME_PUSH = True
 
 # load main client endpoints from .env
 MAIN_CLIENT_ENDPOINT_SMS_DATA = config('MAIN_CLIENT_ENDPOINT_SMS_DATA', default=None)
