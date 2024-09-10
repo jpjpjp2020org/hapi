@@ -29,7 +29,7 @@ def call_openai(message_content):
     ]
 
     try:
-        # Send the request to OpenAI API
+        # send the request to OpenAI API
         response = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=messages,
@@ -37,7 +37,7 @@ def call_openai(message_content):
             temperature=0.7
         )
 
-        # Extract the response
+        # extract the response
         ai_response_text = response.choices[0].message.content.strip()
         print(f"COA: AI Response: {ai_response_text}")  # print the AI response for debugging
 

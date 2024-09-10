@@ -13,7 +13,7 @@ def push_data_to_client(data, endpoint):
     print(f"PDTC: Sending payload to {endpoint}: {data}")
 
     try:
-        response = requests.post(endpoint, json=data, timeout=5, verify=False)
+        response = requests.post(endpoint, json=data, headers=headers, timeout=5, verify=False)
         if response.status_code == 200:
             print(f"PDTC: Successfully pushed data to {endpoint}")
         else:

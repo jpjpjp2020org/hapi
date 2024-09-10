@@ -6,7 +6,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import SMSDataSerializer, SMSValDumpSerializer
 
-@csrf_exempt  # Disabling CSRF for this view, as it will be called by Twilio's servers
+@csrf_exempt  # disabling CSRF for this view, as it will be called by Twilio's servers
 def receive_sms(request):
     if request.method == 'POST':
         phone_number = request.POST.get('From')
